@@ -37,13 +37,13 @@ export default function TopBar() {
 
   return (
     <motion.div
-      className="shrink-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800/50 px-6 py-3"
+      className="shrink-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800/50 px-3 sm:px-6 py-2 sm:py-3"
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center gap-2 sm:gap-6 flex-wrap">
           {/* Server Indicator - Shows which backend is serving */}
           <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30">
             <Server className="w-4 h-4 text-purple-400" />
@@ -56,10 +56,11 @@ export default function TopBar() {
               animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
-            <span className="text-sm text-gray-400">All Systems Operational</span>
+            <span className="text-sm text-gray-400 hidden sm:inline">All Systems Operational</span>
+            <span className="text-sm text-gray-400 sm:hidden">Online</span>
           </div>
 
-          <div className="flex items-center gap-2 text-gray-400">
+          <div className="hidden md:flex items-center gap-2 text-gray-400">
             <Shield className="w-4 h-4 text-emerald-400" />
             <span className="text-sm">
               <span className="text-emerald-400 font-mono">NCA</span> Compliant
@@ -67,13 +68,13 @@ export default function TopBar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 text-gray-400">
+        <div className="flex items-center gap-3 sm:gap-6">
+          <div className="hidden sm:flex items-center gap-2 text-gray-400">
             <MapPin className="w-4 h-4 text-emerald-400" />
             <span className="text-sm">Riyadh, KSA</span>
           </div>
 
-          <div className="flex items-center gap-2 text-gray-400">
+          <div className="hidden md:flex items-center gap-2 text-gray-400">
             <Users className="w-4 h-4 text-cyan-400" />
             <span className="text-sm">
               <motion.span
@@ -90,7 +91,7 @@ export default function TopBar() {
 
           <div className="flex items-center gap-2 text-gray-400">
             <Clock className="w-4 h-4" />
-            <span className="text-sm font-mono">{time} AST</span>
+            <span className="text-sm font-mono">{time}</span>
           </div>
         </div>
       </div>

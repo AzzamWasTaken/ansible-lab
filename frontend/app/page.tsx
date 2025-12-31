@@ -8,7 +8,7 @@ import Terminal from "./components/Terminal";
 import Particles from "./components/Particles";
 import TopBar from "./components/TopBar";
 import WorldMap from "./components/WorldMap";
-import { ArrowRight, Sparkles, Globe, Zap, Shield, Github, ExternalLink, Building2, Lock, FileCheck } from "lucide-react";
+import { ArrowRight, Shield, ExternalLink, Building2, Lock, FileCheck, Cloud } from "lucide-react";
 
 export default function Home() {
   return (
@@ -38,6 +38,16 @@ export default function Home() {
       <div className="flex min-h-screen relative z-10">
         <Sidebar />
         <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Mobile Header - only shows on small screens */}
+          <div className="lg:hidden flex items-center gap-3 px-4 py-3 bg-gray-900/80 backdrop-blur-xl border-b border-gray-800/50">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center">
+              <Cloud className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h1 className="font-bold text-gradient">NOT Deem</h1>
+              <p className="text-xs text-emerald-400/70">Gov Cloud</p>
+            </div>
+          </div>
           <TopBar />
           <main className="flex-1 overflow-y-auto custom-scrollbar">
             <HeroSection />
@@ -56,50 +66,53 @@ export default function Home() {
 
 function HeroSection() {
   return (
-    <section className="relative min-h-[70vh] flex flex-col items-center justify-center px-8 py-16">
+    <section className="relative min-h-[60vh] sm:min-h-[70vh] flex flex-col items-center justify-center px-4 sm:px-8 py-8 sm:py-16">
       <RainCloud />
       <motion.div
-        className="text-center mt-8 relative z-10"
+        className="text-center mt-4 sm:mt-8 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-400 mb-6"
+          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs sm:text-sm text-emerald-400 mb-4 sm:mb-6"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1 }}
         >
           <Building2 className="w-4 h-4" />
-          <span>Official Government Cloud Platform</span>
+          <span className="hidden sm:inline">Official Government Cloud Platform</span>
+          <span className="sm:hidden">Gov Cloud Platform</span>
         </motion.div>
-        <h1 className="text-5xl md:text-7xl font-bold mb-4">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-4">
           <span className="text-white">Welcome to </span>
           <span className="text-gradient glow-text">NOT Deem</span>
         </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+        <p className="text-base sm:text-xl text-gray-400 max-w-2xl mx-auto mb-3 sm:mb-4 px-2">
           The sovereign cloud platform for government entities.
-          Secure, compliant, and proudly hosted in the Kingdom of Saudi Arabia.
+          <span className="hidden sm:inline"> Secure, compliant, and proudly hosted in the Kingdom of Saudi Arabia.</span>
         </p>
-        <p className="text-sm text-emerald-400/70 mb-8">
+        <p className="text-xs sm:text-sm text-emerald-400/70 mb-6 sm:mb-8">
           Trusted by 0 government agencies across 0 ministries
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4">
           <motion.button
-            className="group flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-600 text-white font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all"
+            className="w-full sm:w-auto group flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-600 text-white font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Request Government Access
+            <span className="hidden sm:inline">Request Government Access</span>
+            <span className="sm:hidden">Request Access</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.button>
           <motion.button
-            className="flex items-center gap-2 px-8 py-4 rounded-xl border border-gray-700 text-gray-300 font-semibold hover:bg-gray-800/50 hover:border-gray-600 transition-all"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl border border-gray-700 text-gray-300 font-semibold hover:bg-gray-800/50 hover:border-gray-600 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
             <FileCheck className="w-5 h-5" />
-            View Compliance Docs
+            <span className="hidden sm:inline">View Compliance Docs</span>
+            <span className="sm:hidden">Compliance</span>
           </motion.button>
         </div>
       </motion.div>
@@ -124,8 +137,8 @@ function Features() {
   };
   
   return (
-    <section className="px-8 py-16">
-      <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+    <section className="px-4 sm:px-8 py-8 sm:py-16">
+      <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
         {features.map((feature, index) => (
           <motion.div 
             key={feature.title} 
@@ -154,11 +167,11 @@ function Features() {
 
 function Metrics() {
   return (
-    <section className="px-8 py-16">
+    <section className="px-4 sm:px-8 py-8 sm:py-16">
       <div className="max-w-6xl mx-auto">
-        <motion.div className="text-center mb-12" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Real-time <span className="text-gradient">Government Metrics</span></h2>
-          <p className="text-gray-400">Monitor your non-existent government infrastructure</p>
+        <motion.div className="text-center mb-8 sm:mb-12" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">Real-time <span className="text-gradient">Government Metrics</span></h2>
+          <p className="text-sm sm:text-base text-gray-400">Monitor your non-existent government infrastructure</p>
         </motion.div>
         <Dashboard />
       </div>
@@ -168,11 +181,11 @@ function Metrics() {
 
 function TerminalSection() {
   return (
-    <section className="px-8 py-16">
+    <section className="px-4 sm:px-8 py-8 sm:py-16">
       <div className="max-w-4xl mx-auto">
-        <motion.div className="text-center mb-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <h2 className="text-3xl font-bold text-white mb-4">Secure <span className="text-gradient">Gov Shell</span></h2>
-          <p className="text-gray-400">Deploy classified applications with a single command</p>
+        <motion.div className="text-center mb-6 sm:mb-8" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Secure <span className="text-gradient">Gov Shell</span></h2>
+          <p className="text-sm sm:text-base text-gray-400">Deploy classified applications with a single command</p>
         </motion.div>
         <Terminal />
       </div>
@@ -182,13 +195,13 @@ function TerminalSection() {
 
 function CTA() {
   return (
-    <section className="px-8 py-24">
-      <motion.div className="max-w-4xl mx-auto text-center p-12 rounded-3xl bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-purple-500/10 border border-gray-800/50 relative overflow-hidden" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
+    <section className="px-4 sm:px-8 py-12 sm:py-24">
+      <motion.div className="max-w-4xl mx-auto text-center p-6 sm:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-emerald-500/10 via-cyan-500/10 to-purple-500/10 border border-gray-800/50 relative overflow-hidden" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
         <div className="absolute inset-0 shimmer" />
         <div className="relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to <span className="text-gradient">digitize your ministry</span>?</h2>
-          <p className="text-xl text-gray-400 mb-8">Join 0 government entities running on NOT Deem sovereign cloud</p>
-          <motion.button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 text-white font-semibold hover:bg-emerald-400 transition-all" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Ready to <span className="text-gradient">digitize your ministry</span>?</h2>
+          <p className="text-base sm:text-xl text-gray-400 mb-6 sm:mb-8">Join 0 government entities running on NOT Deem sovereign cloud</p>
+          <motion.button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-emerald-500 text-white font-semibold hover:bg-emerald-400 transition-all" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
             Contact Sales
             <ExternalLink className="w-5 h-5" />
           </motion.button>
@@ -200,15 +213,15 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="px-8 py-8 border-t border-gray-800/50">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <footer className="px-4 sm:px-8 py-6 sm:py-8 border-t border-gray-800/50">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-600 flex items-center justify-center">
             <span className="text-white font-bold text-sm">ND</span>
           </div>
-          <span className="text-gray-400">NOT Deem Gov Cloud</span>
+          <span className="text-gray-400 text-sm sm:text-base">NOT Deem Gov Cloud</span>
         </div>
-        <p className="text-gray-600 text-sm">2025 NOT Deem. A sovereign cloud for the Kingdom. Not really.</p>
+        <p className="text-gray-600 text-xs sm:text-sm text-center">2025 NOT Deem. A sovereign cloud for the Kingdom. Not really.</p>
       </div>
     </footer>
   );

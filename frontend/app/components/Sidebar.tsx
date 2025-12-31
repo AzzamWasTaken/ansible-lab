@@ -85,7 +85,7 @@ const itemVariants = {
 export default function Sidebar() {
   return (
     <motion.aside
-      className="w-64 h-screen bg-gray-900/50 backdrop-blur-xl border-r border-gray-800/50 flex flex-col overflow-hidden sticky top-0 shrink-0"
+      className="hidden lg:flex w-64 h-screen bg-gray-900/50 backdrop-blur-xl border-r border-gray-800/50 flex-col overflow-hidden sticky top-0 shrink-0"
       initial={{ x: -100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
