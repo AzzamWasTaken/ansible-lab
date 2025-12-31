@@ -84,12 +84,13 @@ const itemVariants = {
 
 export default function Sidebar() {
   return (
-    <motion.aside
-      className="hidden lg:flex w-64 h-screen bg-gray-900/50 backdrop-blur-xl border-r border-gray-800/50 flex-col overflow-hidden sticky top-0 shrink-0"
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="hidden lg:block">
+      <motion.aside
+        className="w-64 h-screen bg-gray-900/50 backdrop-blur-xl border-r border-gray-800/50 flex flex-col overflow-hidden sticky top-0 shrink-0"
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
       {/* Logo */}
       <div className="p-4 border-b border-gray-800/50">
         <div className="flex items-center gap-3">
@@ -152,5 +153,6 @@ export default function Sidebar() {
         </div>
       </div>
     </motion.aside>
+    </div>
   );
 }
